@@ -15,8 +15,15 @@ def load(name):
                 l2.append(float(row[1]))
     return l1, l2
 
+def get_t_value_from_csv(csv_file):
+    l1, l2 = load(csv_file)
+    t, p = stats.ttest_rel(l1, l2)
+    return t
+
+
+def main():
+    t = get_t_value_from_csv(sys.argv[1])
+    print(t)
 
 if __name__ == '__main__':
-    l1, l2 = load(sys.argv[1])
-    t, p = stats.ttest_rel(l1, l2)
-    print(t)
+    main()
